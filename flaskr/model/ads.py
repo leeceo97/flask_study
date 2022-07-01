@@ -41,6 +41,7 @@ class FaceBookAds:
     def update_data(self, name, update_name):
         db = self.col
         ad = db.find_one_and_update({'name': name}, {'$set': {'name': update_name}}, return_document=ReturnDocument.AFTER)
+        print(ad)
         return ad
 
     def delete_data(self, name):
@@ -48,16 +49,3 @@ class FaceBookAds:
         ad = db.find_one_and_delete({'name': name})
         return ad
 
-#document1 = {"name": "홍길동",
-#            "bio": "한국인입니다.",
-#            "tags": ["#몽고디비", "#파이썬", "#플라스크"],
-#            "date": datetime.datetime.utcnow(),}
-#document2 = {"name": "영희",
-#             "bio": "한국인입니다.",
-#             "tags": ["#MongoDB", "#Python", "#Flask"],
-#             "date": datetime.datetime.utcnow(),}
-
-#document = [document1, document2]
-#collection.insert_many(document)
-#ads_collection.update_one({'name':'영희'},{'$set':{'name':'이형준'}})
-#print(ads_collection.find({'name':'이형준'}))

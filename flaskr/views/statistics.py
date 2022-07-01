@@ -45,9 +45,10 @@ class FacebookAdDetailView(MethodView):
             return jsonify({'error': 'data not found'}), 404
 
     def put(self, name):
+        update_name = request.json['update_name']
         ad = FaceBookAds('test')
-        r_ad = ad.update_data('종이컵', '젖은 종이컵')
-        return jsonify(r_ad)
+        r_ad = ad.update_data(name, update_name)
+        return r_ad
 
     def delete(self, name):
         print(name)
